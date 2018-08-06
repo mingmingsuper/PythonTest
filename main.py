@@ -187,7 +187,7 @@ with open('/Users/liumingming/Desktop/堆栈.txt', 'r') as f:
 
 building = Building('来福士', Unit('number one'), ['1', '2', '3'])
 
-building_json = json.dumps(building, default=lambda obj: obj.__dict__)
+building_json = json.dumps(building, default=lambda obj: obj.__dict__, ensure_ascii=False)
 print('Dump Student:', building_json)
 
 building_obj = json.loads(building_json, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
