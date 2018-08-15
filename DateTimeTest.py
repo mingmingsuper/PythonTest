@@ -49,3 +49,21 @@ print(re.search(r'<a href=\"(.*?)\".*>(.*)</a>', s2).group(1))
 ip_str = "ip=230.192.168.78,version='1.0.0'"
 result = re.search(r'ip=(?P<ip>\d+\.\d+\.\d+\.\d+),version=\'(?P<version>.*)\'', ip_str)
 print(result.group('ip'), result.group('version'))
+
+# search_result = re.search(r'(?P<name>go)\s+(?P=name)\s+(?P=name)', 'go go1 go')
+# if search_result is not None:
+#     print(search_result.group('name'))
+# else:
+#     print('can\'t find result')
+
+search_result = re.search(r'(go)\s+\1\s+\1', 'go go go')
+if search_result is not None:
+    print(search_result.group())
+else:
+    print('can\'t find result')
+
+s3 = 'abc.xzy'
+print(re.sub(r'(.*)\.(.*)', r'\2.\1', s3))
+
+s4 = '<div><a href="https://support.google.com/chrome/?p=ui_hotword_search" target="_blank">更多</a><p>dfsl</p></div>'
+print(re.findall(r'(?<=\=\").+?(?=\")', s4, re.M | re.S))
